@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { ThemeToggleButton } from "~/components/theme-toggle-button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,5 +9,10 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return <div className="text-3xl">Unixdt</div>;
+  return (
+    <main className="container text-3xl">
+      <div>unixdt</div>
+      <ThemeToggleButton />
+    </main>
+  );
 }
