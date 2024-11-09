@@ -14,6 +14,7 @@ export default {
           "Segoe UI Symbol",
           "Noto Color Emoji",
         ],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
     },
   },
