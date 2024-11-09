@@ -6,6 +6,7 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: "0.5rem",
       screens: {
         "2xl": "1440px",
       },
@@ -69,6 +70,7 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        link: "hsl(var(--link))",
       },
     },
   },
