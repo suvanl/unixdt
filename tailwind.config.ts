@@ -71,6 +71,10 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         link: "hsl(var(--link))",
+        kbd: {
+          DEFAULT: "hsl(var(--kbd))",
+          foreground: "hsl(var(--kbd-foreground))",
+        },
       },
     },
   },

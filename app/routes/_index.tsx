@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { HelpCircleIcon } from "lucide-react";
 import { Footer } from "~/components/footer";
+import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
 import { TopAppBar } from "~/components/top-app-bar";
 import {
   Tooltip,
@@ -43,11 +44,13 @@ export default function Index() {
         </section>
 
         <section className="grid gap-16 lg:grid-cols-2">
-          <section>
+          <section className="space-y-8">
             <p className="text-pretty">
               Enter a Unix timestamp (in seconds or milliseconds) to convert to
               a human-readable date
             </p>
+
+            <TimestampToDateForm />
           </section>
 
           <section>
