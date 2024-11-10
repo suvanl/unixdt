@@ -16,6 +16,7 @@ import {
   useTheme,
 } from "remix-themes";
 import { clsx } from "clsx";
+import { TooltipProvider } from "~/components/ui/tooltip";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -67,7 +68,9 @@ export default function AppWithProviders() {
       themeAction="/action/set-theme"
       disableTransitionOnThemeChange
     >
-      <App />
+      <TooltipProvider>
+        <App />
+      </TooltipProvider>
     </ThemeProvider>
   );
 }
