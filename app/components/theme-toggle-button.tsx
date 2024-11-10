@@ -10,6 +10,7 @@ export function ThemeToggleButton() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)}
+      className="hover:bg-transparent hover:text-foreground/65"
     >
       {theme === Theme.DARK ? (
         <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
