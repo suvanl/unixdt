@@ -9,7 +9,7 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { themeSessionResolver } from "./sessions.server";
+import { themeSessionResolver } from "~/sessions.server";
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
@@ -17,6 +17,7 @@ import {
 } from "remix-themes";
 import { clsx } from "clsx";
 import { TooltipProvider } from "~/components/ui/tooltip";
+import { Toaster } from "~/components/ui/sonner";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -53,6 +54,7 @@ export function App() {
       </head>
       <body className="font-mono">
         <Outlet />
+        <Toaster richColors />
         <ScrollRestoration />
         <Scripts />
       </body>
