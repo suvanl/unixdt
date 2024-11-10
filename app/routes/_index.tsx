@@ -27,6 +27,7 @@ export default function Index() {
           <Tooltip>
             <TooltipTrigger>
               <HelpCircleIcon className="text-muted-foreground size-4" />
+              <span className="sr-only">Help</span>
             </TooltipTrigger>
             <TooltipContent className="w-[300px]">
               <p className="text-xs">
