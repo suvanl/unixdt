@@ -57,8 +57,7 @@ export default function Index() {
               a human-readable date
             </p>
 
-            <TimestampToDateForm timestamp={timestampQuery} />
-            <TimestampToDateOutput timestamp={timestampQuery} />
+            <TimestampToDate timestamp={timestampQuery} />
           </section>
 
           <section>
@@ -68,6 +67,15 @@ export default function Index() {
       </main>
 
       <Footer />
+    </>
+  );
+}
+
+function TimestampToDate({ timestamp }: { timestamp: string | null }) {
+  return (
+    <>
+      <TimestampToDateForm timestamp={timestamp} />
+      <TimestampToDateOutput timestamp={timestamp} />
     </>
   );
 }
