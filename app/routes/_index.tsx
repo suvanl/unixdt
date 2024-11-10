@@ -59,10 +59,6 @@ export default function Index() {
 
             <TimestampToDate timestamp={timestampQuery} />
           </section>
-
-          <section>
-            <p>Select a time and date to convert to a Unix timestamp</p>
-          </section>
         </section>
       </main>
 
