@@ -6,6 +6,7 @@ import {
   parseTimestamp,
 } from "~/lib/datetime";
 import { Table, TableBody, TableCell, TableRow } from "./ui/table";
+import { toast } from "sonner";
 
 export function TimestampToDateOutput({
   timestamp,
@@ -52,7 +53,20 @@ export function TimestampToDateOutput({
                 <Tag>{key}</Tag>
               </div>
             </TableCell>
-            <TableCell>{value}</TableCell>
+            <TableCell>
+              <button
+                title="Copy to clipboard"
+                className="decoration-dotted hover:underline"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(value)
+                    .then(() => toast.success("Copied to clipboard"))
+                    .catch(() => toast.error("Failed to copy to clipboard"));
+                }}
+              >
+                {value}
+              </button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
