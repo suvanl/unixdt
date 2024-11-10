@@ -19,7 +19,7 @@ export function UnixClock() {
 
   return (
     <div>
-      <div className="my-2 text-6xl">{time}</div>
+      <div className="my-2 text-5xl md:text-6xl">{time}</div>
       <Button
         variant="outline"
         className="text-muted-foreground flex items-center rounded-sm p-2"
