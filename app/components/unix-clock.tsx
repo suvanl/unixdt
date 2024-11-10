@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { currentUnixTimestamp } from "~/lib/datetime";
-import { Button } from "./ui/button";
 import { CopyIcon } from "lucide-react";
 import { toast } from "sonner";
 
@@ -20,9 +19,8 @@ export function UnixClock() {
   return (
     <div>
       <div className="my-2 text-5xl sm:text-6xl">{time}</div>
-      <Button
-        variant="outline"
-        className="text-muted-foreground flex items-center rounded-sm p-2"
+      <button
+        className="flex items-center gap-2 rounded-sm text-sm text-muted-foreground hover:underline"
         onClick={() => {
           navigator.clipboard
             .writeText(time.toString())
@@ -30,9 +28,9 @@ export function UnixClock() {
             .catch(() => toast.error("Failed to copy to clipboard"));
         }}
       >
-        <CopyIcon />
-        Copy
-      </Button>
+        <CopyIcon className="size-4" />
+        (copy)
+      </button>
     </div>
   );
 }
