@@ -1,13 +1,12 @@
-import { Form, useSearchParams } from "@remix-run/react";
+import { Form } from "@remix-run/react";
 import { Input } from "./ui/input";
 import { Keyboard } from "./ui/keyboard";
 
-const TIMESTAMP_PARAM_KEY = "timestamp";
-
-export function TimestampToDateForm() {
-  const [searchParams] = useSearchParams();
-  const timestamp = searchParams.get(TIMESTAMP_PARAM_KEY);
-
+export function TimestampToDateForm({
+  timestamp,
+}: {
+  timestamp: string | null;
+}) {
   return (
     <Form>
       <div className="flex flex-col gap-x-2 lg:flex-row lg:items-center">

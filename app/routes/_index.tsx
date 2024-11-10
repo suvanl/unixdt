@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
 import { Footer } from "~/components/footer";
 import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
@@ -10,6 +11,8 @@ import {
 } from "~/components/ui/tooltip";
 import { UnixClock } from "~/components/unix-clock";
 
+const TIMESTAMP_PARAM_KEY = "timestamp";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "unixdt" },
@@ -18,6 +21,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [searchParams] = useSearchParams();
+  const timestampQuery = searchParams.get(TIMESTAMP_PARAM_KEY);
+
   return (
     <>
       <TopAppBar />
@@ -50,7 +56,7 @@ export default function Index() {
               a human-readable date
             </p>
 
-            <TimestampToDateForm />
+            <TimestampToDateForm timestamp={timestampQuery} />
           </section>
 
           <section>
