@@ -1,6 +1,9 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
 import { Footer } from "~/components/footer";
+import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
+import { TimestampToDateOutput } from "~/components/timestamp-to-date-output";
 import { TopAppBar } from "~/components/top-app-bar";
 import {
   Tooltip,
@@ -8,6 +11,8 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { UnixClock } from "~/components/unix-clock";
+
+const TIMESTAMP_PARAM_KEY = "timestamp";
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,6 +22,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [searchParams] = useSearchParams();
+  const timestampQuery = searchParams.get(TIMESTAMP_PARAM_KEY);
+
   return (
     <>
       <TopAppBar />
@@ -43,11 +51,14 @@ export default function Index() {
         </section>
 
         <section className="grid gap-16 lg:grid-cols-2">
-          <section>
+          <section className="space-y-8">
             <p className="text-pretty">
               Enter a Unix timestamp (in seconds or milliseconds) to convert to
               a human-readable date
             </p>
+
+            <TimestampToDateForm timestamp={timestampQuery} />
+            <TimestampToDateOutput timestamp={timestampQuery} />
           </section>
 
           <section>
