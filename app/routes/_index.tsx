@@ -3,6 +3,7 @@ import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
 import { Footer } from "~/components/footer";
 import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
+import { TimestampToDateOutput } from "~/components/timestamp-to-date-output";
 import { TopAppBar } from "~/components/top-app-bar";
 import {
   Tooltip,
@@ -57,6 +58,7 @@ export default function Index() {
             </p>
 
             <TimestampToDateForm timestamp={timestampQuery} />
+            <TimestampToDateOutput timestamp={timestampQuery} />
           </section>
 
           <section>

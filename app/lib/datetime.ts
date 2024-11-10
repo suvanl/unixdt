@@ -1,4 +1,6 @@
-export function currentUnixTimestamp(unit: "s" | "ms" = "s") {
+export type TimestampUnit = "s" | "ms";
+
+export function currentUnixTimestamp(unit: TimestampUnit = "s") {
   if (unit === "ms") {
     return Date.now();
   }
