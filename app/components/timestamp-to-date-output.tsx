@@ -56,7 +56,7 @@ export function TimestampToDateOutput({
             <TableCell>
               <button
                 title="Copy to clipboard"
-                className="decoration-dotted hover:underline"
+                className="text-left decoration-dotted hover:underline"
                 onClick={() => {
                   navigator.clipboard
                     .writeText(value)
