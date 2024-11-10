@@ -5,6 +5,7 @@ import {
   getTimestampUnit,
   parseTimestamp,
 } from "~/lib/datetime";
+import { Table, TableBody, TableCell, TableRow } from "./ui/table";
 
 export function TimestampToDateOutput({
   timestamp,
@@ -15,20 +16,56 @@ export function TimestampToDateOutput({
     return;
   }
 
-  const unit = getTimestampUnit(timestamp);
+  // Use `Number()` to ensure standard form values are expressed as the raw number
+  // e.g., 12e8 -> 1200000000
+  const unit = getTimestampUnit(Number(timestamp).toString());
   const date = parseTimestamp(Number(timestamp), unit);
 
   if (!date) {
     return;
   }
 
+  // todo: make it possible to copy any of the formatted dates on click (show a dotted line + tooltip on hover)
+  // todo: show hints/tooltips on abbreviations (e.g., utc and iso)
+
+  const tableData: { key: string; value: string }[] = [
+    { key: "unit", value: formatTimestampUnit(unit) },
+    {
+      key: "utc",
+      value: formatDate(date, "UTC"),
+    },
+    { key: "your timezone", value: formatDate(date) },
+    {
+      key: "iso 8601",
+      value: date.toISOString(),
+    },
+    { key: "relative", value: formatRelativeDate(date) },
+  ];
+
   return (
-    <div>
-      <p>unit: {formatTimestampUnit(unit)}</p>
-      <p>utc: {formatDate(date, "UTC")}</p>
-      <p>your timezone: {formatDate(date)}</p>
-      <p>ISO 8601: {date.toISOString()}</p>
-      <p>relative: {formatRelativeDate(date)}</p>
+    <Table>
+      <TableBody>
+        {tableData.map(({ key, value }) => (
+          <TableRow key={key}>
+            <TableCell className="p-0 text-right">
+              <div>
+                <Tag>{key}</Tag>
+              </div>
+            </TableCell>
+            <TableCell>{value}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="float-right flex items-center gap-x-4">
+      <p className="bg-accent-alt w-fit px-2 py-1 font-semibold text-background">
+        {children}
+      </p>
     </div>
   );
 }
