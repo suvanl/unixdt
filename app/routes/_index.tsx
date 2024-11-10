@@ -26,10 +26,10 @@ export default function Index() {
   const timestampQuery = searchParams.get(TIMESTAMP_PARAM_KEY);
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <TopAppBar />
 
-      <main className="container my-16 space-y-20">
+      <main className="container my-16 flex-grow space-y-20">
         <section>
           <div className="flex items-center gap-2">
             <h2>Current Unix timestamp</h2>
@@ -67,7 +67,7 @@ export default function Index() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
