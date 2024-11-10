@@ -7,6 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { UnixClock } from "~/components/unix-clock";
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,6 +36,8 @@ export default function Index() {
             </TooltipContent>
           </Tooltip>
         </div>
+
+        <UnixClock />
       </main>
 
       <Footer />
