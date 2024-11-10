@@ -33,7 +33,7 @@ export default function Index() {
         <section>
           <div className="flex items-center gap-2">
             <h2>Current Unix timestamp</h2>
-            <Tooltip>
+            <Tooltip delayDuration={250}>
               <TooltipTrigger>
                 <HelpCircleIcon className="size-4 text-muted-foreground" />
                 <span className="sr-only">Help</span>
