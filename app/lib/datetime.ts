@@ -1,3 +1,6 @@
+import { formatDistance } from "date-fns";
+import { enGB } from "date-fns/locale";
+
 type TimestampUnit = "s" | "ms";
 
 export function currentUnixTimestamp(unit: TimestampUnit = "s") {
@@ -25,7 +28,7 @@ export function parseTimestamp(
   timestamp: number,
   unit: TimestampUnit,
 ): Date | null {
-  if (isNaN(timestamp)) {
+  if (isNaN(timestamp) || timestamp > Number.MAX_SAFE_INTEGER) {
     return null;
   }
 
@@ -40,4 +43,8 @@ export function formatDate(date: Date, timeZone?: string) {
   });
 
   return formatter.format(date);
+}
+
+export function formatRelativeDate(date: Date) {
+  return formatDistance(date, Date.now(), { locale: enGB, addSuffix: true });
 }

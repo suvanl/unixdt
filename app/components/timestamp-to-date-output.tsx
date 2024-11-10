@@ -1,5 +1,6 @@
 import {
   formatDate,
+  formatRelativeDate,
   formatTimestampUnit,
   getTimestampUnit,
   parseTimestamp,
@@ -26,6 +27,7 @@ export function TimestampToDateOutput({
       <p>unit: {formatTimestampUnit(unit)}</p>
       <p>utc: {formatDate(date, "UTC")}</p>
       <p>your timezone: {formatDate(date)}</p>
+      <p>relative: {formatRelativeDate(date)}</p>
     </div>
   );
 }
