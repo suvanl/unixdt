@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
+import { DateToTimestampForm } from "~/components/date-to-timestamp-form";
 import { Footer } from "~/components/footer";
 import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
 import { TimestampToDateOutput } from "~/components/timestamp-to-date-output";
@@ -50,7 +51,7 @@ export default function Index() {
           <UnixClock />
         </section>
 
-        <section className="grid gap-16 lg:grid-cols-2">
+        <section className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <section className="space-y-8">
             <p className="text-pretty">
               Enter a Unix timestamp (in seconds or milliseconds) to convert to
@@ -58,6 +59,14 @@ export default function Index() {
             </p>
 
             <TimestampToDate timestamp={timestampQuery} />
+          </section>
+
+          <section>
+            <section className="space-y-8">
+              <p>Or select a time and date to convert to a Unix timestamp</p>
+
+              <DateToTimestampForm />
+            </section>
           </section>
         </section>
       </main>
