@@ -24,6 +24,7 @@ This project has been configured to be deployed to Vercel. However, it's fairly 
    ```sh
    npm start
    ```
-   > [!TIP]
-   > Use a process manager like [pm2](https://pm2.keymetrics.io/) to keep your app running on your server.
-6. Configure your server to serve requests (e.g., using [nginx](https://nginx.org/)) from the port _unixdt_ is running on
+6. Configure your server to serve requests (e.g., using [nginx](https://nginx.org/)) from the port _unixdt_ is running on.
+
+> [!TIP]
+> Use a process manager like [pm2](https://pm2.keymetrics.io/) to keep your app running on your server.
