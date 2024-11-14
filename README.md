@@ -1,40 +1,29 @@
-# Welcome to Remix!
+# unixdt (Unix datetime)
 
-- 📖 [Remix docs](https://remix.run/docs)
+A super simple [Remix](https://remix.run/) app that converts Unix timestamps to dates, and vice-versa.
 
-## Development
+## Self-hosting
 
-Run the dev server:
+This project has been configured to be deployed to Vercel. However, it's fairly easy to deploy it anywhere else. Here's how to deploy it your own Node.js server:
 
-```shellscript
-npm run dev
-```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+1. Fork this repo and clone the fork locally:
+   ```sh
+   git clone https://github.com/<your-username>/unixdt
+   ```
+2. Install dependencies
+   ```sh
+   npm install
+   ```
+3. Replace all usages of `@vercel/remix` with `@remix-run/node`.
+   - You can uninstall `@vercel/remix` at this stage
+4. Build the app:
+   ```sh
+   npm run build
+   ```
+5. Start the app:
+   ```sh
+   npm start
+   ```
+   > [!TIP]
+   > Use a process manager like [pm2](https://pm2.keymetrics.io/) to keep your app running on your server.
+6. Configure your server to serve requests (e.g., using [nginx](https://nginx.org/)) from the port _unixdt_ is running on
