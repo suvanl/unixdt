@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@vercel/remix";
 import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
 import { Footer } from "~/components/footer";
