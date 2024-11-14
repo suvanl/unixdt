@@ -17,7 +17,10 @@ const TIMESTAMP_PARAM_KEY = "timestamp";
 export const meta: MetaFunction = () => {
   return [
     { title: "unixdt" },
-    { name: "description", content: "Unix timestamp converter" },
+    {
+      name: "description",
+      content: "Convert Unix timestamps to/from readable dates",
+    },
   ];
 };
 
