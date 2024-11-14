@@ -1,4 +1,5 @@
 import "~/styles/globals.css";
+import sonnerStyles from "node_modules/sonner/dist/styles.css?url";
 
 import {
   Links,
@@ -30,6 +31,10 @@ export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
+  },
+  {
+    rel: "stylesheet",
+    href: sonnerStyles,
   },
 ];
 
