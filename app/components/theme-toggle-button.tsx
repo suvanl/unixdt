@@ -13,9 +13,15 @@ export function ThemeToggleButton() {
       className="hover:bg-transparent hover:text-foreground/65"
     >
       {theme === Theme.DARK ? (
-        <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <MoonIcon
+          suppressHydrationWarning
+          className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+        />
       ) : (
-        <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <SunIcon
+          suppressHydrationWarning
+          className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+        />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
