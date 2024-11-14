@@ -29,7 +29,7 @@ export default function Index() {
     <div className="flex min-h-screen flex-col">
       <TopAppBar />
 
-      <main className="container my-16 flex-grow space-y-20">
+      <main className="container my-16 flex-grow space-y-20 px-2">
         <section>
           <div className="flex items-center gap-2">
             <h2>Current Unix timestamp</h2>
