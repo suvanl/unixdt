@@ -36,6 +36,14 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: sonnerStyles,
   },
+  {
+    rel: "icon",
+    href: "/favicon.png",
+  },
+  {
+    rel: "icon",
+    href: "/favicon.svg",
+  },
 ];
 
 export async function loader({ request }: LoaderFunctionArgs) {
