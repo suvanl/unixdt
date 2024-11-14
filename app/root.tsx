@@ -18,6 +18,7 @@ import {
 import { clsx } from "clsx";
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { Toaster } from "~/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/remix";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -57,6 +58,7 @@ export function App() {
         <Toaster richColors />
         <ScrollRestoration />
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
