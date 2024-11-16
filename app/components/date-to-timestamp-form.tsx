@@ -1,16 +1,17 @@
 import { Form } from "@remix-run/react";
 import { Input } from "./ui/input";
+import { SubmitButton } from "./submit-button";
 
 export function DateToTimestampForm() {
   return (
-    <Form>
+    <Form className="group flex items-center gap-x-4">
       <Input
         type="datetime-local"
         name="datetime"
         defaultValue={"2024-01-01T00:00"}
-        className="rounded-sm"
+        className="max-w-fit rounded-sm !text-lg"
       />
-      <button type="submit">Submit</button>
+      <SubmitButton className="hidden group-focus-within:block" />
     </Form>
   );
 }

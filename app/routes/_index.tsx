@@ -66,7 +66,9 @@ export default function Index() {
 
           <section>
             <section className="space-y-8">
-              <p>Or select a time and date to convert to a Unix timestamp</p>
+              <p className="text-pretty">
+                Or select a date and time to convert to a Unix timestamp
+              </p>
 
               <DateToTimestampForm />
             </section>
