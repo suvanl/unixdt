@@ -12,8 +12,10 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { UnixClock } from "~/components/unix-clock";
+import { DateToTimestampOutput } from "~/components/date-to-timestamp-output";
 
 const TIMESTAMP_PARAM_KEY = "timestamp";
+const DATETIME_PARAM_KEY = "datetime";
 
 export const meta: MetaFunction = () => {
   return [
@@ -28,6 +30,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const [searchParams] = useSearchParams();
   const timestampQuery = searchParams.get(TIMESTAMP_PARAM_KEY);
+  const dateTimeQuery = searchParams.get(DATETIME_PARAM_KEY);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -70,7 +73,8 @@ export default function Index() {
                 Or select a date and time to convert to a Unix timestamp
               </p>
 
-              <DateToTimestampForm />
+              <DateToTimestampForm isoDate={dateTimeQuery} />
+              <DateToTimestampOutput isoDate={dateTimeQuery} />
             </section>
           </section>
         </section>
