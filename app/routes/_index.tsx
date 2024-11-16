@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@vercel/remix";
 import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
 import { DateToTimestampForm } from "~/components/date-to-timestamp-form";
@@ -18,7 +18,10 @@ const TIMESTAMP_PARAM_KEY = "timestamp";
 export const meta: MetaFunction = () => {
   return [
     { title: "unixdt" },
-    { name: "description", content: "Unix timestamp converter" },
+    {
+      name: "description",
+      content: "Convert Unix timestamps to/from readable dates",
+    },
   ];
 };
 
@@ -30,7 +33,7 @@ export default function Index() {
     <div className="flex min-h-screen flex-col">
       <TopAppBar />
 
-      <main className="container my-16 flex-grow space-y-20">
+      <main className="container my-16 flex-grow space-y-20 px-2">
         <section>
           <div className="flex items-center gap-2">
             <h2>Current Unix timestamp</h2>

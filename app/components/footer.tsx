@@ -4,7 +4,7 @@ export function Footer() {
     <footer className="bg-border py-2">
       <div className="container flex flex-col gap-y-1 sm:flex-row sm:justify-between">
         <span className="text-sm text-muted-foreground">
-          Copyright (c) 2024 Suvan Leelasena
+          Copyright (c) {new Date().getFullYear()} Suvan Leelasena
         </span>
         <a
           href={licenseUrl}
