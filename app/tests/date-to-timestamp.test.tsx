@@ -8,10 +8,6 @@ import {
 } from "~/components/date-to-timestamp";
 
 describe("(component) DateToTimestamp", () => {
-  const testProps = {
-    isoDate: "2014-11-01T12:45",
-  };
-
   const nodes = {
     get timestamp() {
       return screen.queryByText("timestamp");
@@ -36,7 +32,7 @@ describe("(component) DateToTimestamp", () => {
   });
 
   test("should render timestamp in output for full datetime", () => {
-    render(<DateToTimestampOutput {...testProps} />);
+    render(<DateToTimestampOutput isoDate="2014-11-01T12:45" />);
     expect(nodes.timestamp).toBeVisible();
   });
 
