@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, test } from "vitest";
 import { TimestampToDateOutput } from "~/components/timestamp-to-date";
 
 describe("(component) TimestampToDate", () => {
@@ -25,6 +25,10 @@ describe("(component) TimestampToDate", () => {
     },
   };
 
+  afterEach(() => {
+    cleanup();
+  });
+
   test("should not render fields in output for invalid timestamp", () => {
     render(<TimestampToDateOutput timestamp="an invalid timestamp" />);
     expect(nodes.unit).not.toBeInTheDocument();
@@ -32,10 +36,10 @@ describe("(component) TimestampToDate", () => {
 
   test("should render all fields in output for valid timestamp", () => {
     render(<TimestampToDateOutput {...testProps} />);
-    expect(nodes.unit).toBeInTheDocument();
-    expect(nodes.utc).toBeInTheDocument();
-    expect(nodes.localTime).toBeInTheDocument();
-    expect(nodes.iso).toBeInTheDocument();
-    expect(nodes.relative).toBeInTheDocument();
+    expect(nodes.unit).toBeVisible();
+    expect(nodes.utc).toBeVisible();
+    expect(nodes.localTime).toBeVisible();
+    expect(nodes.iso).toBeVisible();
+    expect(nodes.relative).toBeVisible();
   });
 });
