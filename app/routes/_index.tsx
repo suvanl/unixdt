@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@vercel/remix";
 import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
+import { DateToTimestampForm } from "~/components/date-to-timestamp-form";
 import { Footer } from "~/components/footer";
 import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
 import { TimestampToDateOutput } from "~/components/timestamp-to-date-output";
@@ -11,8 +12,10 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { UnixClock } from "~/components/unix-clock";
+import { DateToTimestampOutput } from "~/components/date-to-timestamp-output";
 
 const TIMESTAMP_PARAM_KEY = "timestamp";
+const DATETIME_PARAM_KEY = "datetime";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,6 +30,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const [searchParams] = useSearchParams();
   const timestampQuery = searchParams.get(TIMESTAMP_PARAM_KEY);
+  const dateTimeQuery = searchParams.get(DATETIME_PARAM_KEY);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -53,7 +57,7 @@ export default function Index() {
           <UnixClock />
         </section>
 
-        <section className="grid gap-16 lg:grid-cols-2">
+        <section className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <section className="space-y-8">
             <p className="text-pretty">
               Enter a Unix timestamp (in seconds or milliseconds) to convert to
@@ -61,6 +65,17 @@ export default function Index() {
             </p>
 
             <TimestampToDate timestamp={timestampQuery} />
+          </section>
+
+          <section>
+            <section className="space-y-8">
+              <p className="text-pretty">
+                Or select a date and time to convert to a Unix timestamp
+              </p>
+
+              <DateToTimestampForm isoDate={dateTimeQuery} />
+              <DateToTimestampOutput isoDate={dateTimeQuery} />
+            </section>
           </section>
         </section>
       </main>

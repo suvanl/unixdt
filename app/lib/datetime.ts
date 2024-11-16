@@ -48,3 +48,11 @@ export function formatDate(date: Date, timeZone?: string) {
 export function formatRelativeDate(date: Date) {
   return formatDistance(date, Date.now(), { locale: enGB, addSuffix: true });
 }
+
+export function getUnixTimestamp(date: Date, unit: TimestampUnit = "s") {
+  if (unit === "ms") {
+    return date.getTime();
+  }
+
+  return Math.floor(date.getTime() / 1000);
+}

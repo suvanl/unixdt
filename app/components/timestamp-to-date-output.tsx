@@ -7,6 +7,7 @@ import {
 } from "~/lib/datetime";
 import { Table, TableBody, TableCell, TableRow } from "./ui/table";
 import { toast } from "sonner";
+import { Tag } from "./tag";
 
 export function TimestampToDateOutput({
   timestamp,
@@ -26,7 +27,6 @@ export function TimestampToDateOutput({
     return;
   }
 
-  // todo: make it possible to copy any of the formatted dates on click (show a dotted line + tooltip on hover)
   // todo: show hints/tooltips on abbreviations (e.g., utc and iso)
 
   const tableData: { key: string; value: string }[] = [
@@ -50,7 +50,7 @@ export function TimestampToDateOutput({
           <TableRow key={key}>
             <TableCell className="p-0 text-right">
               <div>
-                <Tag>{key}</Tag>
+                <Tag className="float-right">{key}</Tag>
               </div>
             </TableCell>
             <TableCell>
@@ -71,15 +71,5 @@ export function TimestampToDateOutput({
         ))}
       </TableBody>
     </Table>
-  );
-}
-
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="float-right flex items-center gap-x-4">
-      <p className="bg-accent-alt w-fit px-2 py-1 font-semibold text-background">
-        {children}
-      </p>
-    </div>
   );
 }
