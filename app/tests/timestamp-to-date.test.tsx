@@ -3,10 +3,6 @@ import { afterEach, describe, expect, test } from "vitest";
 import { TimestampToDateOutput } from "~/components/timestamp-to-date";
 
 describe("(component) TimestampToDate", () => {
-  const testProps = {
-    timestamp: "1700000000",
-  };
-
   const nodes = {
     get unit() {
       return screen.queryByText("unit");
@@ -35,7 +31,7 @@ describe("(component) TimestampToDate", () => {
   });
 
   test("should render all fields in output for valid timestamp", () => {
-    render(<TimestampToDateOutput {...testProps} />);
+    render(<TimestampToDateOutput timestamp="1700000000" />);
     expect(nodes.unit).toBeVisible();
     expect(nodes.utc).toBeVisible();
     expect(nodes.localTime).toBeVisible();
