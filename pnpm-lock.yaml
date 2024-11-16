@@ -23,6 +23,9 @@ importers:
       '@remix-run/serve':
         specifier: ^2.14.0
         version: 2.14.0(typescript@5.6.3)
+      '@remix-run/testing':
+        specifier: ^2.14.0
+        version: 2.14.0(react-dom@18.3.0-canary-c3048aab4-20240326(react@18.3.0-canary-c3048aab4-20240326))(react@18.3.0-canary-c3048aab4-20240326)(typescript@5.6.3)
       '@vercel/analytics':
         specifier: ^1.4.0
         version: 1.4.0(@remix-run/react@2.14.0(react-dom@18.3.0-canary-c3048aab4-20240326(react@18.3.0-canary-c3048aab4-20240326))(react@18.3.0-canary-c3048aab4-20240326)(typescript@5.6.3))(react@18.3.0-canary-c3048aab4-20240326)
@@ -953,6 +956,16 @@ packages:
     resolution: {integrity: sha512-9Th9UzDaoFFBD7zA5mRI1KT8JktFLN4ij9jPygrKBhG/kYmNIvhcMtq9VyjcbMvFK5natTyhOhrrKRIHtijD4w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@remix-run/testing@2.14.0':
+    resolution: {integrity: sha512-jIJgS27jpGpeaIMsn4jmtKiVwh/XQ2aTDIKIJ0/r+jaJb+X40gLZI1MX/MWKY6CIZ92Y20zj6UqJbxmZvlYRjA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^18.0.0
       typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
@@ -4955,6 +4968,18 @@ snapshots:
       turbo-stream: 2.4.0
     optionalDependencies:
       typescript: 5.6.3
+
+  '@remix-run/testing@2.14.0(react-dom@18.3.0-canary-c3048aab4-20240326(react@18.3.0-canary-c3048aab4-20240326))(react@18.3.0-canary-c3048aab4-20240326)(typescript@5.6.3)':
+    dependencies:
+      '@remix-run/node': 2.14.0(typescript@5.6.3)
+      '@remix-run/react': 2.14.0(react-dom@18.3.0-canary-c3048aab4-20240326(react@18.3.0-canary-c3048aab4-20240326))(react@18.3.0-canary-c3048aab4-20240326)(typescript@5.6.3)
+      '@remix-run/router': 1.21.0
+      react: 18.3.0-canary-c3048aab4-20240326
+      react-router-dom: 6.28.0(react-dom@18.3.0-canary-c3048aab4-20240326(react@18.3.0-canary-c3048aab4-20240326))(react@18.3.0-canary-c3048aab4-20240326)
+    optionalDependencies:
+      typescript: 5.6.3
+    transitivePeerDependencies:
+      - react-dom
 
   '@remix-run/web-blob@3.1.0':
     dependencies:

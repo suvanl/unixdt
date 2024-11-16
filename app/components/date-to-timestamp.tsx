@@ -15,12 +15,21 @@ export function DateToTimestamp({ isoDate }: { isoDate: string | null }) {
 }
 
 export function DateToTimestampForm({ isoDate }: { isoDate: string | null }) {
+  if (isoDate && !isoDate.includes("T")) isoDate = `${isoDate}T00:00`;
+
   return (
     <Form className="group flex items-center gap-x-4">
       <Input
         type="datetime-local"
         name="datetime"
-        defaultValue={isoDate ?? "2024-01-01T00:00"}
+        aria-label="datetime"
+        defaultValue={
+          isoDate
+            ? new Date(isoDate).toString() === "Invalid Date"
+              ? ""
+              : isoDate
+            : ""
+        }
         className="max-w-fit rounded-sm !text-lg"
       />
       <SubmitButton className="hidden group-focus-within:block" />
