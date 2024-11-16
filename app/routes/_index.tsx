@@ -1,10 +1,7 @@
 import type { MetaFunction } from "@vercel/remix";
 import { useSearchParams } from "@remix-run/react";
 import { HelpCircleIcon } from "lucide-react";
-import { DateToTimestampForm } from "~/components/date-to-timestamp-form";
 import { Footer } from "~/components/footer";
-import { TimestampToDateForm } from "~/components/timestamp-to-date-form";
-import { TimestampToDateOutput } from "~/components/timestamp-to-date-output";
 import { TopAppBar } from "~/components/top-app-bar";
 import {
   Tooltip,
@@ -12,7 +9,8 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { UnixClock } from "~/components/unix-clock";
-import { DateToTimestampOutput } from "~/components/date-to-timestamp-output";
+import { TimestampToDate } from "~/components/timestamp-to-date";
+import { DateToTimestamp } from "~/components/date-to-timestamp";
 
 const TIMESTAMP_PARAM_KEY = "timestamp";
 const DATETIME_PARAM_KEY = "datetime";
@@ -73,8 +71,7 @@ export default function Index() {
                 Or select a date and time to convert to a Unix timestamp
               </p>
 
-              <DateToTimestampForm isoDate={dateTimeQuery} />
-              <DateToTimestampOutput isoDate={dateTimeQuery} />
+              <DateToTimestamp isoDate={dateTimeQuery} />
             </section>
           </section>
         </section>
@@ -82,14 +79,5 @@ export default function Index() {
 
       <Footer />
     </div>
-  );
-}
-
-function TimestampToDate({ timestamp }: { timestamp: string | null }) {
-  return (
-    <>
-      <TimestampToDateForm timestamp={timestamp} />
-      <TimestampToDateOutput timestamp={timestamp} />
-    </>
   );
 }

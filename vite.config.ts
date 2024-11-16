@@ -11,16 +11,22 @@ declare module "@remix-run/node" {
 
 export default defineConfig({
   plugins: [
-    remix({
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-        v3_singleFetch: true,
-        v3_lazyRouteDiscovery: true,
-      },
-      presets: [vercelPreset()],
-    }),
+    process.env.NODE_ENV !== "test"
+      ? remix({
+          future: {
+            v3_fetcherPersist: true,
+            v3_relativeSplatPath: true,
+            v3_throwAbortReason: true,
+            v3_singleFetch: true,
+            v3_lazyRouteDiscovery: true,
+          },
+          presets: [vercelPreset()],
+        })
+      : null,
     tsconfigPaths(),
   ],
+  test: {
+    environment: "happy-dom",
+    setupFiles: ["./setupTests.ts"],
+  },
 });
