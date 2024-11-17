@@ -2,6 +2,11 @@
 
 A super simple [Remix](https://remix.run/) app that converts Unix timestamps to dates, and vice-versa.
 
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./.github/images/screenshot-dark.png">
+    <img alt="FixMyLinks" src="./.github/images/screenshot-light.png">
+</picture>
+
 ## Self-hosting
 
 This project has been configured to be deployed to Vercel. However, it's fairly easy to deploy it anywhere else. Here's how to deploy it your own Node.js server:
