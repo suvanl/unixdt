@@ -1,6 +1,11 @@
 # unixdt (Unix datetime)
 
-A super simple [Remix](https://remix.run/) app that converts Unix timestamps to dates, and vice-versa.
+A super simple [Remix](https://remix.run/) web app that converts Unix timestamps to dates, and vice-versa.
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./.github/images/screenshot-dark.png">
+    <img alt="FixMyLinks" src="./.github/images/screenshot-light.png">
+</picture>
 
 ## Self-hosting
 
