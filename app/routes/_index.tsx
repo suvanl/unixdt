@@ -16,11 +16,31 @@ const TIMESTAMP_PARAM_KEY = "timestamp";
 const DATETIME_PARAM_KEY = "datetime";
 
 export const meta: MetaFunction = () => {
+  const title = "unixdt – Timestamp Converter";
+  const description = "Convert Unix timestamps to/from readable dates";
+
   return [
-    { title: "unixdt" },
+    { title },
+    {
+      name: "og:site_name",
+      content: "unixdt",
+    },
     {
       name: "description",
-      content: "Convert Unix timestamps to/from readable dates",
+      content: description,
+    },
+    {
+      name: "og:description",
+      content: description,
+    },
+    {
+      name: "og:type",
+      content: "website",
+    },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: `https://${import.meta.env.VITE_PROD_DOMAIN}`,
     },
   ];
 };
