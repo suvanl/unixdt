@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import background from "@/assets/background.svg";
+import "@fontsource-variable/inter";
 ---
 
 <!doctype html>
@@ -17,7 +18,7 @@ import background from "@/assets/background.svg";
 		<link rel="icon" href="/favicon.ico" />
 	</head>
 	<body>
-		<main>
+		<main class="container relative mx-auto lg:px-16">
 			<img
 				class="fixed top-0 left-0 w-full h-full -z-10 blur-[128px]"
 				src={background.src}
