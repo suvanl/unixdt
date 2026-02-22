@@ -18,15 +18,17 @@ import "@fontsource-variable/inter";
 		<link rel="icon" href="/favicon.ico" />
 	</head>
 	<body>
-		<main class="container relative mx-auto lg:px-16">
+		<div class="container relative mx-auto lg:px-16 h-full">
 			<img
 				class="fixed top-0 left-0 w-full h-full -z-10 blur-[128px]"
 				src={background.src}
 				alt=""
 				fetchpriority="high"
 			/>
-			<slot />
-		</main>
+			<main class="h-full">
+				<slot />
+			</main>
+		</div>
 	</body>
 </html>
 

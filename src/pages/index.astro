@@ -1,8 +1,17 @@
 ---
 import AppBar from "@/components/app-bar.astro";
+import { LiveClock } from "@/components/live-clock";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
 	<AppBar />
+
+	<div class="flex flex-col space-y-8">
+		<p class="tracking-tight">
+			Convert between Unix timestamps, ISO 8601, and human-readable dates.
+		</p>
+
+		<LiveClock client:load />
+	</div>
 </Layout>
