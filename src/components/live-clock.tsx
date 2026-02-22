@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 import {
   Tooltip,
@@ -12,6 +12,16 @@ import { currentUnixTimestamp } from "@/lib/datetime";
 export function LiveClock() {
   const [unixTimestamp, setUnixTimestamp] = useState(currentUnixTimestamp());
   const [isoTimestamp, setIsoTimestamp] = useState(new Date().toISOString());
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const isHoveredRef = useRef(false);
+  const isFocusedRef = useRef(false);
+  const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const openTooltip = () => setTooltipOpen(true);
+  const closeTooltip = () => {
+    if (!isHoveredRef.current && !isFocusedRef.current) setTooltipOpen(false);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,16 +39,49 @@ export function LiveClock() {
       </div>
       <div className="flex flex-row items-center gap-8">
         <TooltipProvider>
-          <Tooltip>
+          <Tooltip
+            open={tooltipOpen}
+            onOpenChange={(open) => {
+              if (open || (!isHoveredRef.current && !isFocusedRef.current))
+                setTooltipOpen(open);
+            }}
+          >
             <TooltipTrigger
-              onClick={() => copyToClipboard(unixTimestamp.toString())}
+              onMouseEnter={() => {
+                isHoveredRef.current = true;
+                openTooltip();
+              }}
+              onMouseLeave={() => {
+                isHoveredRef.current = false;
+                closeTooltip();
+              }}
+              onFocus={() => {
+                isFocusedRef.current = true;
+                openTooltip();
+              }}
+              onBlur={() => {
+                isFocusedRef.current = false;
+                closeTooltip();
+              }}
+              onClick={() => {
+                copyToClipboard(unixTimestamp.toString());
+                setCopied(true);
+                if (copiedTimeoutRef.current)
+                  clearTimeout(copiedTimeoutRef.current);
+                copiedTimeoutRef.current = setTimeout(
+                  () => setCopied(false),
+                  1500,
+                );
+              }}
             >
               <span className="font-mono decoration-muted-foreground decoration-dotted hover:underline">
                 {unixTimestamp}
               </span>
             </TooltipTrigger>
             <TooltipContent>
-              <p className="font-mono">Unix timestamp</p>
+              <p className="font-mono">
+                {copied ? "Copied to clipboard" : "Unix timestamp"}
+              </p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
