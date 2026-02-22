@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { copyToClipboard } from "@/lib/clipboard";
 import { currentUnixTimestamp } from "@/lib/datetime";
-import { Card } from "./ui/card";
 
 export function LiveClock() {
   const [unixTimestamp, setUnixTimestamp] = useState(currentUnixTimestamp());
@@ -20,9 +27,24 @@ export function LiveClock() {
         <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 dark:bg-emerald-300" />
         <p className="text-muted-foreground">Now</p>
       </div>
-      <div className="flex flex-row gap-8">
-        <span className="font-mono">{unixTimestamp}</span>
-        <span className="font-mono text-muted-foreground transition-colors hover:text-primary">
+      <div className="flex flex-row items-center gap-8">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger
+              onClick={() => copyToClipboard(unixTimestamp.toString())}
+            >
+              <span className="font-mono decoration-muted-foreground decoration-dotted hover:underline">
+                {unixTimestamp}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="font-mono">Unix timestamp</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        <div className="h-4 w-px bg-border" />
+        <span className="font-mono text-muted-foreground decoration-muted-foreground decoration-dotted transition-colors hover:text-primary hover:underline">
           {isoTimestamp}
         </span>
       </div>
