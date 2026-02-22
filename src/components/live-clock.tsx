@@ -15,9 +15,17 @@ export function LiveClock() {
   }, []);
 
   return (
-    <Card>
-      <span>{unixTimestamp}</span>
-      <span>{isoTimestamp}</span>
+    <Card className="flex flex-row items-center gap-16 px-4">
+      <div className="flex flex-row items-center gap-2">
+        <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 dark:bg-emerald-300" />
+        <p className="text-muted-foreground">Now</p>
+      </div>
+      <div className="flex flex-row gap-8">
+        <span className="font-mono">{unixTimestamp}</span>
+        <span className="font-mono text-muted-foreground transition-colors hover:text-primary">
+          {isoTimestamp}
+        </span>
+      </div>
     </Card>
   );
 }
