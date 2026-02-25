@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { CopyButton } from "@/components/copy-button";
 import { CopyableText } from "@/components/copyable-text";
 import { Card } from "@/components/ui/card";
+import { copyToClipboard } from "@/lib/clipboard";
 import { currentUnixTimestamp } from "@/lib/datetime";
 
 export function LiveClock() {
@@ -16,26 +18,46 @@ export function LiveClock() {
   }, []);
 
   return (
-    <Card className="flex flex-row items-center gap-16 px-4">
+    <Card className="flex flex-row items-center gap-12 px-4">
       <div className="flex flex-row items-center gap-2">
         <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 dark:bg-emerald-300" />
         <p className="text-muted-foreground">Now</p>
       </div>
 
       <div className="flex flex-row items-center gap-8">
-        <CopyableText
-          value={unixTimestamp.toString()}
-          label="Unix timestamp"
-          className="font-mono decoration-muted-foreground decoration-dotted hover:underline"
-        />
+        <div className="flex items-center gap-2">
+          <CopyableText
+            value={unixTimestamp.toString()}
+            label="Unix timestamp"
+            className="font-mono decoration-muted-foreground decoration-dotted hover:underline"
+          />
+
+          <CopyButton
+            variant="ghost"
+            size="icon-xs"
+            title="Copy"
+            className="cursor-pointer text-muted-foreground transition-colors hover:text-primary"
+            onClick={() => copyToClipboard(unixTimestamp.toString())}
+          />
+        </div>
 
         <div className="h-4 w-px bg-border" />
 
-        <CopyableText
-          value={isoTimestamp}
-          label="ISO timestamp"
-          className="font-mono text-muted-foreground decoration-muted-foreground decoration-dotted transition-colors hover:text-primary hover:underline"
-        />
+        <div className="flex items-center gap-2">
+          <CopyableText
+            value={isoTimestamp}
+            label="ISO timestamp"
+            className="font-mono text-muted-foreground decoration-muted-foreground decoration-dotted transition-colors hover:text-primary hover:underline"
+          />
+
+          <CopyButton
+            variant="ghost"
+            size="icon-xs"
+            title="Copy"
+            className="cursor-pointer text-muted-foreground transition-colors hover:text-primary"
+            onClick={() => copyToClipboard(isoTimestamp)}
+          />
+        </div>
       </div>
     </Card>
   );
