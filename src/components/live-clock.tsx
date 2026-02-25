@@ -18,13 +18,13 @@ export function LiveClock() {
   }, []);
 
   return (
-    <Card className="flex flex-row items-center gap-12 px-4">
+    <Card className="flex px-4 sm:flex-row sm:items-center sm:gap-12">
       <div className="flex flex-row items-center gap-2">
         <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-400 dark:bg-emerald-300" />
         <p className="text-muted-foreground">Now</p>
       </div>
 
-      <div className="flex flex-row items-center gap-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:gap-8">
         <div className="flex items-center gap-2">
           <CopyableText
             value={unixTimestamp.toString()}
@@ -41,7 +41,7 @@ export function LiveClock() {
           />
         </div>
 
-        <div className="h-4 w-px bg-border" />
+        <div className="hidden h-4 w-px bg-border sm:visible" />
 
         <div className="flex items-center gap-2">
           <CopyableText
