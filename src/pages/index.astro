@@ -1,5 +1,6 @@
 ---
 import AppBar from "@/components/app-bar.astro";
+import { ConverterTabs } from "@/components/converter-tabs";
 import Footer from "@/components/footer.astro";
 import { LiveClock } from "@/components/live-clock";
 import Layout from "../layouts/Layout.astro";
@@ -8,13 +9,15 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
 	<AppBar />
 
-	<div class="flex flex-col space-y-8">
+	<div class="flex flex-col gap-y-8">
 		<p class="tracking-tight text-muted-foreground">
 			Convert between Unix timestamps, ISO 8601, and human-readable dates.
 		</p>
 
 		<LiveClock client:load />
 
-		<Footer className="my-8" />
+		<ConverterTabs client:visible />
+
+		<Footer />
 	</div>
 </Layout>
