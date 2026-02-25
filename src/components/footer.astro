@@ -1,0 +1,14 @@
+---
+import { cn } from "@/lib/utils";
+
+const year = new Date().getUTCFullYear();
+
+const { className } = Astro.props;
+---
+
+<footer class={cn(className, "text-xs text-muted-foreground text-center")}>
+    <p>
+        Copyright &copy; {year} Suvan Leelasena. All conversions run locally in the
+        browser.
+    </p>
+</footer>

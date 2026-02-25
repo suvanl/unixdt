@@ -1,5 +1,6 @@
 ---
 import AppBar from "@/components/app-bar.astro";
+import Footer from "@/components/footer.astro";
 import { LiveClock } from "@/components/live-clock";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -13,5 +14,7 @@ import Layout from "../layouts/Layout.astro";
 		</p>
 
 		<LiveClock client:load />
+
+		<Footer className="my-8" />
 	</div>
 </Layout>
