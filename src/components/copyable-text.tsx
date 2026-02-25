@@ -10,7 +10,7 @@ import { copyToClipboard } from "@/lib/clipboard";
 interface CopyableTextProps {
   value: string;
   label: string;
-  className?: string;
+  className?: HTMLSpanElement["className"];
 }
 
 export function CopyableText({ value, label, className }: CopyableTextProps) {
@@ -22,7 +22,7 @@ export function CopyableText({ value, label, className }: CopyableTextProps) {
 
   const openTooltip = () => setTooltipOpen(true);
   const closeTooltip = () => {
-    if (!isHoveredRef.current && !isFocusedRef.current) setTooltipOpen(false);
+    if (!isHoveredRef.current || !isFocusedRef.current) setTooltipOpen(false);
   };
 
   return (
